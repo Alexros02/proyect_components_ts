@@ -1,19 +1,20 @@
+import { useRoutes } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import HomePage from "./pages/HomePage";
 
-import './App.css'
-import Testeo from "./components/Testeo";
+const App = () => {
+    const routes = useRoutes([
+        {
+            path: "/",
+            element: <MainLayout />,
+            children: [
+                { index: true, element: <HomePage /> },
+            ],
+        },
+        //{ path: "*", element: <NotFound /> }, // Página 404
+    ]);
 
+    return routes;
+};
 
-function App() {
-
-
-  return (
-    <>
-
-      <h1>Vite + React</h1>
-        <Testeo/>
-
-    </>
-  )
-}
-
-export default App
+export default App;
