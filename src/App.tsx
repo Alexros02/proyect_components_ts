@@ -1,20 +1,17 @@
-import { useRoutes } from "react-router-dom";
-import MainLayout from "./layouts/MainLayout";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import "./index.css";
+import Header from "./components/Header"; // Asegúrate de importar aquí los estilos
 
-const App = () => {
-    const routes = useRoutes([
-        {
-            path: "/",
-            element: <MainLayout />,
-            children: [
-                { index: true, element: <HomePage /> },
-            ],
-        },
-        //{ path: "*", element: <NotFound /> }, // Página 404
-    ]);
-
-    return routes;
-};
+function App() {
+    return (
+        <Router>
+            <Header/>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+            </Routes>
+        </Router>
+    );
+}
 
 export default App;
