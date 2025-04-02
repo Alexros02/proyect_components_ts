@@ -1,17 +1,18 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {Routes, Route, BrowserRouter as Router} from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/HomePage";
-import "./index.css";
-import Header from "./components/Header"; // Asegúrate de importar aquí los estilos
 
-function App() {
+
+const App = () => {
     return (
         <Router>
-            <Header/>
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route element={<MainLayout />}>
+                    <Route path="/" element={<HomePage />} />
+                </Route>
             </Routes>
         </Router>
     );
-}
+};
 
 export default App;
