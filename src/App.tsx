@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
-import HomePage from "./pages/HomePage";
+import Home from "./pages/HomePage";
+
 
 const App = () => {
     const routes = useRoutes([
@@ -8,10 +9,10 @@ const App = () => {
             path: "/",
             element: <MainLayout />,
             children: [
-                { index: true, element: <HomePage /> },
+                { index: true, element: <Home /> },
+                /*{ path: "about", element: <About /> }*/
             ],
         },
-        //{ path: "*", element: <NotFound /> }, // Página 404
     ]);
 
     return routes;

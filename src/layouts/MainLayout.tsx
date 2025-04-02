@@ -4,12 +4,12 @@ import Header from "../components/Header";
 
 const MainLayout = () => {
     return (
-        <div>
-            <Header />
-            <main>
-                <Outlet /> {/* Aquí se renderizarán las páginas */}
+        <div className="flex flex-col min-h-screen">
+            <Header/>
+            <main className="flex-1 p-4">
+                <Outlet /> {/* Renderiza las páginas */}
             </main>
-            {/*<Footer />*/}
+            {/*<footer className="bg-neutral text-center p-4">&copy; 2025 Battle Trails</footer>*/}
         </div>
     );
 };
