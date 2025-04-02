@@ -65,6 +65,3 @@ Los usuarios pueden iniciar sesión con Firebase Auth y gestionar su cuenta, lo 
 Se pueden filtrar las publicaciones según diferentes criterios, como el tipo de lugar, la época histórica y la ubicación.
 
 
-## Licencia
-
-Este proyecto está licenciado bajo la **MIT License**. Consulta el archivo LICENSE para más detalles.
