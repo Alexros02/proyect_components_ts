@@ -1,18 +1,21 @@
-import {Routes, Route, BrowserRouter as Router} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
-import HomePage from "./pages/HomePage";
+import Home from "./pages/HomePage";
 
 
 const App = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route element={<MainLayout />}>
-                    <Route path="/" element={<HomePage />} />
-                </Route>
-            </Routes>
-        </Router>
-    );
+    const routes = useRoutes([
+        {
+            path: "/",
+            element: <MainLayout />,
+            children: [
+                { index: true, element: <Home /> },
+                /*{ path: "about", element: <About /> }*/
+            ],
+        },
+    ]);
+
+    return routes;
 };
 
 export default App;
