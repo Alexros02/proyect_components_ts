@@ -1,7 +1,9 @@
     /*
     import styles from "./HomePage.module.css";
     */
-    import Post from "../../components/Post/Post.tsx"
+    import Post from "../../components/Post/Post.tsx";
+    import Modal from "../../components/Modal";
+    import img from "../../Assets/img.jpg";
 
     const HomePage = () => {
     return (
@@ -10,9 +12,10 @@
                 id="123"
                 title="Ruta por Normandía"
                 description="Una ruta histórica por las playas del desembarco de Normandía durante la Segunda Guerra Mundial..."
-                image="https://via.placeholder.com/400x200"
+                image={img}
                 location="Normandía, Francia"
             />
+            <Modal/>
         </div>
 
     );

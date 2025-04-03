@@ -51,3 +51,8 @@
     --depth: 1;
     --noise: 0;
 }
+@layer base {
+    :where(:root:has(.modal-open,.modal[open],.modal:target,.modal-toggle:checked,.drawer:not(.drawer-open)>.drawer-toggle:checked)) {
+        scrollbar-gutter: auto !important; /* Quitamos el stable */
+    }
+}
