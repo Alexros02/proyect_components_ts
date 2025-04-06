@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const Modal: React.FC = () => {
+const Modal = () => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
     const openModal = () => {
