@@ -1,5 +1,6 @@
 /*import { Link } from "react-router-dom";*/
 
+
 interface PostCardProps {
     id: string;
     title: string;
@@ -10,10 +11,10 @@ interface PostCardProps {
 
 const Post = ({ /*id,*/ title, description, image, location }: PostCardProps) => {
     return (
-        <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 w-96 h-1/5">
-            <figure className="h-1/4 overflow-hidden">
-                <img src={image} alt={title} className="w-full h-full object-cover" />
-            </figure>
+        <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300 w-96 h-1/5 overflow-hidden">
+
+            <img src={image} alt={title} className=" h-50 object-cover " />
+
             <div className="card-body">
                 <h2 className="card-title text-secondary">{title}</h2>
                 <p className="text-sm text-gray-500 italic">{location}</p>
