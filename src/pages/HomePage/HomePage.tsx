@@ -3,18 +3,28 @@
     */
     import Post from "../../components/Post/Post.tsx";
     import Modal from "../../components/Modal";
-    import img from "../../Assets/img.jpg";
+
+    import {PostData} from "../../types/post.ts";
+    import {useEffect, useState} from "react";
+    import {getPosts} from "../../firebase/firebaseService.ts";
+
+    interface PostWithId extends PostData {
+        id: string;
+    }
 
     const HomePage = () => {
+        const [posts, setPosts] = useState<PostWithId []>([]);
+
+        useEffect(() => {
+            const fetchPosts = async () => {
+                const data = await getPosts();
+                setPosts(data as PostWithId[]);
+            };
+            fetchPosts();
+        })
     return (
         <div className="w-full flex justify-center h-full flex-wrap gap-4 p-2">
-            <Post
-                id="123"
-                title="Ruta por Normandía"
-                description="Una ruta histórica por las playas del desembarco de Normandía durante la Segunda Guerra Mundial..."
-                image={img}
-                location="Normandía, Francia"
-            />
+            {posts.map((post) => (<Post key={post.id} {...post}></Post>))}
             <Modal/>
         </div>
 

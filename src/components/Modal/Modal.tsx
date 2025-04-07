@@ -1,13 +1,40 @@
-import { useRef } from "react";
+import {useRef, useState} from "react";
+import {PostData} from "../../types/post.ts";
+import {createPost} from "../../firebase/firebaseService.ts";
 
 const Modal = () => {
     const dialogRef = useRef<HTMLDialogElement>(null);
 
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("");
+    const [image, setImage] = useState("");
+
     const openModal = () => {
-        if (dialogRef.current) {
-            dialogRef.current.showModal();
-        }
+            dialogRef.current?.showModal();
     };
+
+    const handleSubmit= async ()=>{
+        const newPost : PostData = {
+            userId:"userId123",
+            title: title,
+            description: description,
+            images: [image],
+            location: location
+        };
+
+        try {
+            await createPost(newPost);
+            setTitle("");
+            setDescription("");
+            setLocation("");
+            setImage("");
+            dialogRef.current?.close();
+        } catch (error) {
+            console.error("Error creating post:", error);
+        }
+
+    }
 
     return (
         <>
@@ -34,7 +61,7 @@ const Modal = () => {
                                 type="text"
                                 className="input input-bordered w-full"
                                 name="title"
-                                required
+                                onChange={(e) => setTitle(e.target.value)}
                             />
                         </div>
 
@@ -45,7 +72,7 @@ const Modal = () => {
                             <textarea
                                 className="textarea textarea-bordered w-full"
                                 name="description"
-                                required
+                                onChange={(e) => setDescription(e.target.value)}
                             />
                         </div>
 
@@ -57,12 +84,24 @@ const Modal = () => {
                                 type="text"
                                 className="input input-bordered w-full"
                                 name="location"
-                                required
+                                onChange={(e) => setLocation(e.target.value)}
+                            />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">URL de la imagen</span>
+                            </label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full"
+                                name="image"
+                                placeholder="https://miimagen.com/foto.jpg"
+                                onChange={(e) => setImage(e.target.value)}
                             />
                         </div>
 
                         <div className="flex justify-end gap-2 pt-2">
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                                 Publicar
                             </button>
                         </div>
