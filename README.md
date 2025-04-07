@@ -26,7 +26,7 @@ Para instalar y ejecutar el proyecto en tu máquina local, sigue estos pasos:
 
 1. Clona este repositorio:
     ```bash
-    git clone https://github.com/tu-usuario/proyect_components_ts.git
+    git clone https://github.com/Alexros02/proyect_components_ts.git
     ```
 2. Navega a la carpeta del proyecto:
     ```bash
